@@ -11,8 +11,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/entrypoint.sh
+    - id: RUN BASH
+      env:
+        MY_NAME: ${{ inputs.MY_NAME }}
+      run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
-branding:
-  icon: "mic"
-  color: "purple"
