@@ -5,7 +5,19 @@ jobs:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
+      - name: Import an external action
+        uses: actions/checkout@v1
+      - name: Import a action.yml from sub dir.
+        uses: ./action-a
         with:
           my-name: "Mona"
+      - name: run arbitrary bash command.
+        with:
+          my-name: "Lisa"
+        env:
+          MY_VAR: Hi there! My name is
+          FIRST_NAME: ${{ inputs.my-name }}
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+          run: |
+            echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
