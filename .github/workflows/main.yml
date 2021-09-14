@@ -30,7 +30,6 @@ jobs:
       # https://docs.github.com/en/actions/reference/environment-variables
       - name: General variables.
         run: |
-          echo ${{ CI }}
           echo ${{ GITHUB_WORKFLOW }}
           echo ${{ GITHUB_RUN_ID }}
           echo ${{ GITHUB_RUN_NUMBER }}
