@@ -13,6 +13,6 @@ runs:
   steps:
     - id: run-bash
       env:
-        MY_NAME: ${{ inputs.my-name }}
+        INPUT_MY_NAME: ${{ inputs.my-name }}
       run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
