@@ -12,12 +12,9 @@ jobs:
         with:
           my-name: "Mona"
       - name: run arbitrary bash command.
-        uses: actions/checkout@v1
-        with:
-          my-name: "Lisa"
         env:
           MY_VAR: Hi there! My name is
-          FIRST_NAME: ${{ inputs.my-name }}
+          FIRST_NAME: Lisa
           MIDDLE_NAME: The
           LAST_NAME: Octocat
         run: |
