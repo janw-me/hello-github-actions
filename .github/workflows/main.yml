@@ -25,4 +25,5 @@ jobs:
     steps:
       - name: job variables.
         run: |
-          echo ${{ job.general }}
+          echo ${{ job.general.name }}
+          echo ${{ job.general.runs-on }}
