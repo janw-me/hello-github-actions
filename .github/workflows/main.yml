@@ -1,8 +1,8 @@
 name: A workflow for my Hello World file
 on: push
 jobs:
-  build:
-    name: Hello world action
+  general: # this is a job ID
+    name: general lists.
     runs-on: ubuntu-latest
     steps:
       - name: Import an external action
@@ -19,3 +19,10 @@ jobs:
           LAST_NAME: Octocat
         run: |
           echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  variable-list:
+    name: Lists of variables avialable in the action.
+    runs-on: ubuntu-latest
+      steps:
+        -name: job variables.
+        run: |
+          echo ${{ job.general }}
