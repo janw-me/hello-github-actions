@@ -27,5 +27,4 @@ jobs:
       - name: job variables.
         run: |
           echo ${{ github.job }}
-#          echo ${{ jobs.general.name }}
           echo ${{ jobs.general.runs-on }}
