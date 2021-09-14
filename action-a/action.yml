@@ -7,7 +7,6 @@ inputs:
     description: "Who to greet"
     required: true
     default: "World"
-
 runs:
   using: "composite"
   steps:
@@ -16,7 +15,3 @@ runs:
         INPUT_MY_NAME: ${{ inputs.my-name }}
       run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
-    - id: flat-command
-      run: echo "::set-output name=test::world"
-    - name: Print a greeting
-

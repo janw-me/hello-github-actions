@@ -12,6 +12,7 @@ jobs:
         with:
           my-name: "Mona"
       - name: run arbitrary bash command.
+        uses: actions/checkout@v1
         with:
           my-name: "Lisa"
         env:
