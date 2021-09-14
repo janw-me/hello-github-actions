@@ -26,5 +26,6 @@ jobs:
       # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs
       - name: job variables.
         run: |
-          echo ${{ jobs.general.name }}
-          echo ${{ jobs.general.runs-on }}
+          echo ${{ github.job }}
+#          echo ${{ jobs.general.name }}
+#          echo ${{ jobs.general.runs-on }}
