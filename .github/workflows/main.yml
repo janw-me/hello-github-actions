@@ -23,6 +23,6 @@ jobs:
     name: Lists of variables avialable in the action.
     runs-on: ubuntu-latest
       steps:
-        -name: job variables.
-        run: |
-          echo ${{ job.general }}
+        - name: job variables.
+          run: |
+            echo ${{ job.general }}
