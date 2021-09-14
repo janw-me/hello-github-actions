@@ -28,7 +28,7 @@ jobs:
         run: |
           echo ${{ github.job }}
       # https://docs.github.com/en/actions/reference/environment-variables
-      - name: job variables.
+      - name: General variables.
         run: |
           echo ${{ CI }}
           echo ${{ GITHUB_WORKFLOW }}
