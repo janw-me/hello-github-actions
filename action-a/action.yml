@@ -9,9 +9,10 @@ inputs:
     default: "World"
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
-
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/entrypoint.sh
+      shell: bash
 branding:
   icon: "mic"
   color: "purple"
