@@ -11,8 +11,18 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - id: run-bash
+    - id: run-bash-script
       env:
         INPUT_MY_NAME: ${{ inputs.my-name }}
       run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
+    - id: flat-command
+      run: echo "::set-output name=test::world"
+    - name: Print a greeting
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
