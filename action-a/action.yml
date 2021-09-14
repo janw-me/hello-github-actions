@@ -11,7 +11,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - id: RUN BASH
+    - id: run-bash
       env:
         MY_NAME: ${{ inputs.MY_NAME }}
       run: ${{ github.action_path }}/entrypoint.sh
