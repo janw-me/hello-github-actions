@@ -1,5 +1,5 @@
 name: Workflow just to document how Workflows work
-on: push
+on: push #https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 jobs:
   general: # this is a job ID
     name: How actions ans scripts work
