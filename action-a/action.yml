@@ -3,15 +3,15 @@ description: "Greet someone"
 author: "octocat@github.com"
 
 inputs:
-  MY_NAME:
+  my-name:
     description: "Who to greet"
     required: true
     default: "World"
-
 runs:
-  using: "docker"
-  image: "Dockerfile"
-
-branding:
-  icon: "mic"
-  color: "purple"
+  using: "composite"
+  steps:
+    - id: run-bash-script
+      env:
+        INPUT_MY_NAME: ${{ inputs.my-name }}
+      run: ${{ github.action_path }}/entrypoint.sh
+      shell: bash
