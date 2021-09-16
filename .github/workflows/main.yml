@@ -1,8 +1,8 @@
-name: Workflow just to document how Workflows work
+name: Workflow just to document how actions work.
 on: push #https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 jobs:
   general: # this is a job ID
-    name: How actions ans scripts work
+    name: How actions and scripts work
     runs-on: ubuntu-latest
     steps:
       - name: Import an external action
@@ -19,6 +19,11 @@ jobs:
           LAST_NAME: Octocat
         run: |
           echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+      - name: run bash script.
+        env:
+          VAR_1: This will be echoed.
+        run: ${{ github.workspace }}/workflow.sh
+        shell: bash
   # https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#example-printing-context-information-to-the-log-file
   all-vars:
     name: all variables.
@@ -74,9 +79,9 @@ jobs:
       - name: github.base_ref  Target branch of the PR. Only when 'on' is pull_request or pull_request_target.
         run: |
           echo ${{ github.base_ref }}
-      - name: github.workflow
+      - name: github.workspace Path to repo
         run: |
-          echo ${{ github.workflow }}
+          echo ${{ github.workspace }}
       - name: github.workflow Name of this workflow (see line 1)
         run: |
           echo ${{ github.workflow }}
