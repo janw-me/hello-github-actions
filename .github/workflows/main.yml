@@ -1,13 +1,13 @@
-name: A workflow for my Hello World file
+name: Workflow just to document how Workflows work
 on: push
 jobs:
   general: # this is a job ID
-    name: general lists.
+    name: How actions ans scripts work
     runs-on: ubuntu-latest
     steps:
       - name: Import an external action
         uses: actions/checkout@v1
-      - name: Import a action.yml from sub dir.
+      - name: Import a action.yml from sub dir. And set it's variable
         uses: ./action-a
         with:
           my-name: "Mona"
@@ -19,21 +19,9 @@ jobs:
           LAST_NAME: Octocat
         run: |
           echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
-  variable-list:
-    name: Lists of variables avialable in the action.
-    runs-on: ubuntu-latest
-    steps:
-      # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs
-      - name: job variables.
-        run: |
-          echo ${{ github.job }}
-      # https://docs.github.com/en/actions/reference/environment-variables
-      - name: General variables.
-        run: |
-          echo todo
   # https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#example-printing-context-information-to-the-log-file
-  context:
-    name: Context variables.
+  all-vars:
+    name: all variables.
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
@@ -60,3 +48,37 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+  # https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions
+  relevant-vars:
+    name: Variables I find usefull..
+    runs-on: ubuntu-latest
+    steps:
+      - name: github.job
+        run: |
+          echo ${{ github.job }}
+      - name: github.repositoryUrl
+        run: |
+          echo ${{ github.repositoryUrl }}
+      - name: github.event_name (event that triggered this action "push")
+        run: |
+          echo ${{ github.event_name }}
+      - name: github.sha commit hash
+        run: |
+          echo ${{ github.sha }}
+      - name: github.ref The branch or tag ref that triggered the workflow run  refs/heads/BRANCHNAME or refs/tags/TAGNAME
+        run: |
+          echo ${{ github.ref }}
+      - name: github.head_ref  Source branch of the PR. Only when 'on' is pull_request or pull_request_target.
+        run: |
+          echo ${{ github.head_ref }}
+      - name: github.base_ref  Target branch of the PR. Only when 'on' is pull_request or pull_request_target.
+        run: |
+          echo ${{ github.base_ref }}
+      - name: github.workflow
+        run: |
+          echo ${{ github.workflow }}
+      - name: github.workflow Name of this workflow (see line 1)
+        run: |
+          echo ${{ github.workflow }}
+# https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#functions
+# functions
