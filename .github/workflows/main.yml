@@ -25,6 +25,14 @@ jobs:
         run: ${{ github.workspace }}/workflow.sh
         shell: bash
   # https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#example-printing-context-information-to-the-log-file
+  Actions-secrets:
+    name: In the repo settings there is a tab for secrets. Like passwords and ssh keys.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print secret "FAV_POKEMON"
+        env:
+          FAV_POKEMON: ${{ secrets.FAV_POKEMON }}
+        run: echo "$FAV_POKEMON"
   all-vars:
     name: all variables.
     runs-on: ubuntu-latest
